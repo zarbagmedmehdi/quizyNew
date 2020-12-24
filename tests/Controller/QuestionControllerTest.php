@@ -10,7 +10,7 @@ class QuestionControllerTest extends WebTestCase
         $client = static::createClient();
 
         $client->request('GET', '/question');
-        $string='{"message":"Welcome to your new controller!"}';
+        $string='{"message":"Welcome to your new controller irisi!"}';
         echo $client->getResponse()->getContent();
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $this->assertEquals($string, $client->getResponse()->getContent());
