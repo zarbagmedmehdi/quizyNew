@@ -36,15 +36,15 @@ class QuestionRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Question
+
+    public function save(Question $question): int
     {
-        return $this->createQueryBuilder('q')
-            ->andWhere('q.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $entityManager = $this->_em;
+        $entityManager->persist($question);
+        $entityManager->flush();
+        if($question->getId())
+        return 1;
+        else return -1;
     }
-    */
+
 }

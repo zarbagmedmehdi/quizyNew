@@ -9,12 +9,19 @@ class QuestionControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $client->request('GET', '/question');
-        $string='{"message":"Welcome to your new controller irisi 2!"}';
-        echo $client->getResponse()->getContent();
+        $client->request('GET', '/question/');
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $this->assertEquals($string, $client->getResponse()->getContent());
-        $this->assertTrue($client->getResponse()->isSuccessful());
+
 
     }
+
+    public function testTitleExistence()
+    {
+        $client = static::createClient();
+        $client->request('GET', '/question/');
+        $this->assertSelectorTextContains('html h1', 'Question index');
+
+    }
+
+
 }
