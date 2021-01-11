@@ -20,6 +20,7 @@ class QuestionController extends AbstractController
      */
     public function index(QuestionRepository $questionRepository): Response
     {   $var=1;
+        $var2=2;
         return $this->render('question/index.html.twig', [
             'questions' => $questionRepository->findAll(),
         ]);
