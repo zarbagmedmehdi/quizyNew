@@ -34,7 +34,9 @@ class QuestionSaveTest  extends KernelTestCase
         method('save')->willReturn(1);
         $faker = Faker\Factory::create();
         $question->setLibelle($faker->title);
-        $question->setContenu(($faker->text(500)));
+        $question->setContenu(($faker->text(
+            100
+        )));
         $result = $this->entityManager
         ->getRepository(Question::class)->save($question);
         $this->assertEquals(1, 1);
