@@ -12,12 +12,10 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class QuestionSaveTest  extends KernelTestCase
 {
-
     /**
      * @var \Doctrine\ORM\EntityManager
      */
     private $entityManager;
-
     protected function setUp(): void
     {
         $kernel = self::bootKernel();
@@ -26,22 +24,22 @@ class QuestionSaveTest  extends KernelTestCase
             ->get('doctrine')
             ->getManager();
     }
-
     public function testName()
     {
         $question =new Question();
 
-        $questionRepository = $this->createMock(QuestionRepository::class);
-        $questionRepository->expects($this->any())->method('save')->willReturn(1);
+        $questionRepository = $this->
+        createMock(QuestionRepository::class);
+        $questionRepository->expects($this->any())->
+        method('save')->willReturn(1);
         $faker = Faker\Factory::create();
         $question->setLibelle($faker->title);
         $question->setContenu(($faker->text(500)));
-     //   $result = $this->entityManager
-     //       ->getRepository(Question::class)->save($question);
-      $this->assertEquals(1, 1);
+        $result = $this->entityManager
+        ->getRepository(Question::class)->save($question);
+        $this->assertEquals(1, 1);
 
     }
-
     protected function tearDown(): void
     {
         parent::tearDown();

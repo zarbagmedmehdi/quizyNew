@@ -8,7 +8,7 @@ class QuestionControllerTest extends WebTestCase
     public function testShowPost()
     {
         $client = static::createClient();
-
+        
         $client->request('GET', '/question/');
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
 
